@@ -43,7 +43,10 @@ class JPEGImage(object):
 
         """
         try:
-            return JPEGImage(blob=lib.Exif(self.data).thumbnail)
+            thumb = lib.Exif(self.data).thumbnail
+            if len(thumb) == 0:
+                return None
+            return JPEGImage(blob=thumb)
         except lib.ExifException:
             return None
 
