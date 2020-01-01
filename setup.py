@@ -2,9 +2,8 @@ import os
 import sys
 from setuptools import setup
 
-
 if os.path.exists('README.rst'):
-    if sys.version_info > (3,):
+    if sys.version_info > (3, ):
         description_long = open('README.rst', encoding="utf-8").read()
     else:
         description_long = open('README.rst').read()
@@ -19,18 +18,16 @@ being re-compressed in the process. This is due to the fact that all
 transformation operations work directly with the JPEG data.
 """
 
-setup(
-    name='jpegtran-cffi',
-    version="0.6a1",
-    description=("Extremly fast, (mostly) lossless JPEG transformations"),
-    description_long=description_long,
-    author="Johannes Baiter",
-    url="http://github.com/jbaiter/jpegtran-cffi.git",
-    author_email="johannes.baiter@gmail.com",
-    license='MIT',
-    packages=['jpegtran'],
-    package_data={'jpegtran': ['jpegtran.cdef']},
-    setup_requires=['cffi >= 1.0'],
-    install_requires=['cffi >= 1.0'],
-    cffi_modules=["jpegtran/jpegtran_build.py:ffi"]
-)
+setup(name='jpegtran-cffi',
+      version="0.6a1",
+      description=("Extremly fast, (mostly) lossless JPEG transformations"),
+      description_long=description_long,
+      author="Johannes Baiter",
+      url="http://github.com/jbaiter/jpegtran-cffi.git",
+      author_email="johannes.baiter@gmail.com",
+      license='MIT',
+      packages=['jpegtran'],
+      package_data={'jpegtran': ['jpegtran.cdef']},
+      setup_requires=['cffi >= 1.0'],
+      install_requires=['cffi >= 1.0'],
+      cffi_modules=["jpegtran/jpegtran_build.py:ffi"])

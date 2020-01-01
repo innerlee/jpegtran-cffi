@@ -135,8 +135,7 @@ class JPEGImage(object):
 
         """
         if direction not in ('horizontal', 'vertical'):
-            raise ValueError("Direction must be either 'vertical' or "
-                             "'horizontal'")
+            raise ValueError("Direction must be either 'vertical' or " "'horizontal'")
         new = JPEGImage(blob=lib.Transformation(self.data).flip(direction))
         new._update_thumbnail()
         return new
@@ -179,12 +178,10 @@ class JPEGImage(object):
         :rtype:         jpegtran.JPEGImage
 
         """
-        valid_crop = (x < self.width and y < self.height and
-                      x+width <= self.width and y+height <= self.height)
+        valid_crop = (x < self.width and y < self.height and x + width <= self.width and y + height <= self.height)
         if not valid_crop:
             raise ValueError("Crop parameters point outside of the image")
-        new = JPEGImage(blob=lib.Transformation(self.data)
-                             .crop(x, y, width, height))
+        new = JPEGImage(blob=lib.Transformation(self.data).crop(x, y, width, height))
         new._update_thumbnail()
         return new
 
@@ -205,8 +202,7 @@ class JPEGImage(object):
             return self
         if width > self.width or height > self.height:
             raise ValueError("jpegtran can only downscale JPEGs")
-        new = JPEGImage(blob=lib.Transformation(self.data)
-                        .scale(width, height, quality))
+        new = JPEGImage(blob=lib.Transformation(self.data).scale(width, height, quality))
         new._update_thumbnail()
         return new
 
@@ -218,8 +214,7 @@ class JPEGImage(object):
 
         """
         if not re.match(r'^.*\.jp[e]*g$', fname.lower()):
-            raise ValueError("fname must refer to a JPEG file, i.e. end with "
-                             "'.jpg' or '.jpeg'")
+            raise ValueError("fname must refer to a JPEG file, i.e. end with " "'.jpg' or '.jpeg'")
         with open(fname, 'wb') as fp:
             fp.write(self.data)
 
@@ -239,10 +234,10 @@ class JPEGImage(object):
         target_height = None
         if self.width > self.height:
             target_width = 160
-            target_height = int(160/(self.width/self.height))
+            target_height = int(160 / (self.width / self.height))
         else:
             target_height = 160
-            target_width = int(160*(self.width/self.height))
+            target_width = int(160 * (self.width / self.height))
         if target_width > self.width and target_height > self.height:
             # TODO: We should instead strip the thumbnail completely since
             #       it clearly no longer makes any sense

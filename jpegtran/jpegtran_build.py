@@ -13,12 +13,12 @@ SOURCE = """
 """
 
 ffi = FFI()
-ffi.set_source(
-    "_jpegtran", SOURCE,
-    sources=["src/epeg.c"],
-    include_dirs=["src"],
-    define_macros=[("HAVE_UNSIGNED_CHAR", "1")],
-    libraries=["jpeg", "turbojpeg"])
+ffi.set_source("_jpegtran",
+               SOURCE,
+               sources=["src/epeg.c"],
+               include_dirs=["src"],
+               define_macros=[("HAVE_UNSIGNED_CHAR", "1")],
+               libraries=["jpeg", "turbojpeg"])
 ffi.cdef(CDEF)
 
 if __name__ == "__main__":

@@ -8,7 +8,6 @@
  * This file contains software version identification.
  */
 
+#define JVERSION "8d  15-Jan-2012"
 
-#define JVERSION	"8d  15-Jan-2012"
-
-#define JCOPYRIGHT	"Copyright (C) 2012, Thomas G. Lane, Guido Vollbeding"
+#define JCOPYRIGHT "Copyright (C) 2012, Thomas G. Lane, Guido Vollbeding"
